@@ -3,9 +3,31 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.1/axios.js"></script>
   </head>
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <div>
+    	<ul id="quran">
+    		
+    	</ul>
+    	<p>hey there</p>
+    </div>
   </body>
+  <script>
+  	axios.get('http://api.alquran.cloud/quran/en.asad')
+  		.then(function(res){
+  			console.log(res)
+  			res.data.data.surahs.forEach(function(book){
+  				console.log(book.englishName)
+		  		
+		  		
+		  		let li = document.createElement('li')
+		  		
+		  		li.innerHTML = book.englishName 
+		  		document.getElementById('quran').appendChild(li)
+  		   }) // ends forEach
+  	    }) // ends then()
+  </script>
 </html>
