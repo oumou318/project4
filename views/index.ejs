@@ -3,27 +3,32 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!-- importing axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.1/axios.js"></script>
   </head>
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+
     <div>
-    	<ul id="quran">
+    	<ol id="quran">
+    	<!-- the script below is rendering here -->
     		
-    	</ul>
-    	<p>hey there</p>
+    	</ol>
+    	
     </div>
   </body>
   <script>
   	axios.get('http://api.alquran.cloud/quran/en.asad')
   		.then(function(res){
   			console.log(res)
+  			// a for each loops through an array 
   			res.data.data.surahs.forEach(function(book){
   				console.log(book.englishName)
 		  		
 		  		
-		  		let li = document.createElement('li')
+		  		let li = document.createElement('button')
 		  		
 		  		li.innerHTML = book.englishName 
 		  		document.getElementById('quran').appendChild(li)
